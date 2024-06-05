@@ -1,0 +1,60 @@
+{
+  "name": "jdmn-js-runtime",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "DMN runtime engine",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goldmansachs/jdmn-js-runtime.git"
+  },
+  "keywords": [
+    "dmn",
+    "feel",
+    "parser",
+    "antlr",
+    "decision",
+    "model"
+  ],
+  "author": "Octavian Patrascoiu",
+  "license": "Apache-2.0",
+  "browser": "dist/antlr4.web.mjs",
+  "main": "dist/jdmn-js-runtime.node.cjs",
+  "module": "dist/jdmn-js-runtime.node.mjs",
+  "engines": {
+    "node": ">=16"
+  },
+  "exports": {
+    ".": {
+      "node": {
+        "import": "./dist/jdmn-js-runtime.node.mjs",
+        "require": "./dist/jdmn-js-runtime.node.cjs",
+        "default": "./dist/jdmn-js-runtime.node.mjs"
+      },
+      "browser": {
+        "import": "./dist/jdmn-js-runtime.web.mjs",
+        "require": "./dist/jdmn-js-runtime.web.cjs",
+        "default": "./dist/jdmn-js-runtime.web.mjs"
+      }
+    }
+  },
+  "dependencies": {
+    "antlr4": "4.10.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "7.23.3",
+    "@babel/eslint-parser": "7.23.3",
+    "babel-loader": "^9.1.3",
+    "eslint": "^8.53.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "jasmine": "^4.0.2",
+    "jasmine-spec-reporter": "^7.0.0",
+    "webpack": "~5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "lint": "eslint src/jdmn-js-runtime/ spec/ --fix",
+    "test": "jasmine",
+    "build": "webpack"
+  }
+}
