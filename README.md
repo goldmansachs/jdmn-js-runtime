@@ -1,4 +1,12 @@
-# jdmn-js-runtime
+# JavaScript runtime for jDMN
+
+JavaScript runtime libraries for jDMN
+
+See https://github.com/goldmansachs/jdmn for more information on jDMN
+
+This runtime requires node version >= 16.
+
+jDMN runtime is available in 4 target languages, and favors consistency of versioning across targets.
 
 ## How to install
 
