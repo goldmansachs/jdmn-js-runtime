@@ -69,6 +69,11 @@ describe("Parser", () => {
         validateInputEntry("contains(?, \"abc\")");
     });
 
+    it("Positive Unary Test - Expressions", () => {
+        // Expressions in Positive Unary Tests
+        validateInputEntry("1 + 2");
+    });
+
     it("Expressions", () => {
         // Addition
         validateOutputEntry("x + 1");
@@ -93,5 +98,24 @@ describe("Parser", () => {
         validateOutputEntry("x+1*2");
         validateOutputEntry("(x+1)*2");
         validateOutputEntry("-(x+1)*2");
+        // Ranges in For expressions
+        validateOutputEntry("for i in [1..2] return i");
+        // Qualified names for type names
+        validateOutputEntry("function (p: a.b.Person) p.age + 2");
+        // In expressions
+        validateOutputEntry("[1, 2, 3] in [1, 2, 3]");
+        validateOutputEntry("[1,2,3] in ([[1,2,3,4]], [[1,2,3]])");
+        // Function definitions
+        validateOutputEntry("function (x, y) x + y");
+        validateOutputEntry("function (x: number, y: number) : number x + y");
+        validateOutputEntry("function (x: number, y: number) : list<number> [x, y]");
+        validateOutputEntry("function (x: number, y: number) : context<a: number, b: number> {a: x, b: y}");
+        validateOutputEntry("function (x, y) external { java: {class : \"name\", methodSignature: \"signature\" } }");
+        validateOutputEntry("function (x : feel.string, y : feel.string) external { java: {class : \"name\", methodSignature: \"signature\" } }");
+        validateOutputEntry("123 instance of function <number, number> -> number");
+        // Temporal literals
+        validateOutputEntry("@\"2019-03-31\" instance of date");
+        // Range type
+        validateOutputEntry("123 instance of range<number>");
     });
 });

@@ -24,7 +24,7 @@
 
     <properties>
         <antlr.version>4.10.1</antlr.version>
-        <dmn.version>1.1</dmn.version>
+        <dmn.version>1.4</dmn.version>
         <package.name>jdmn-js-runtime</package.name>
 
         <antlr.source.directory>${project.basedir}/src/${package.name}/resources/dmn/${dmn.version}</antlr.source.directory>
