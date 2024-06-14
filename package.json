@@ -38,7 +38,7 @@
     }
   },
   "dependencies": {
-    "antlr4": "4.10.1"
+    "antlr4": "4.13.1-patch-1"
   },
   "devDependencies": {
     "@babel/preset-env": "7.23.3",

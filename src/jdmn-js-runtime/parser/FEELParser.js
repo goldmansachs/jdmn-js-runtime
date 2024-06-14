@@ -1,4 +1,4 @@
-// Generated from FEELParser.g4 by ANTLR 4.10.1
+// Generated from FEELParser.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from "antlr4";
 
@@ -163,7 +163,7 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-const sharedContextCache = new antlr4.PredictionContextCache();
+const sharedContextCache = new antlr4.atn.PredictionContextCache();
 
 export default class FEELParser extends antlr4.Parser {
 
@@ -214,10 +214,6 @@ export default class FEELParser extends antlr4.Parser {
 
     }
 
-    get atn() {
-        return atn;
-    }
-
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
     	case 30:
@@ -230,11 +226,11 @@ export default class FEELParser extends antlr4.Parser {
     type_sempred(localctx, predIndex) {
     	switch(predIndex) {
     		case 0:
-    			return "range" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))) || "list" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop)));
+    			return "range" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))) || "list" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop)));
     		case 1:
-    			return "context" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop)));
+    			return "context" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop)));
     		case 2:
-    			return "function" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop)));
+    			return "function" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop)));
     		default:
     			throw "No predicate with index:" + predIndex;
     	}
@@ -395,7 +391,7 @@ export default class FEELParser extends antlr4.Parser {
     positiveUnaryTests() {
 	    let localctx = new PositiveUnaryTestsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 10, FEELParser.RULE_positiveUnaryTests);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 123;
@@ -403,7 +399,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 128;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===FEELParser.COMMA) {
+	        while(_la===20) {
 	            this.state = 124;
 	            this.match(FEELParser.COMMA);
 	            this.state = 125;
@@ -454,19 +450,19 @@ export default class FEELParser extends antlr4.Parser {
     simplePositiveUnaryTest() {
 	    let localctx = new SimplePositiveUnaryTestContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 14, FEELParser.RULE_simplePositiveUnaryTest);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 136;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case FEELParser.LT:
-	        case FEELParser.GT:
-	        case FEELParser.LE:
-	        case FEELParser.GE:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 133;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << FEELParser.LT) | (1 << FEELParser.GT) | (1 << FEELParser.LE) | (1 << FEELParser.GE))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 7680) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -476,9 +472,9 @@ export default class FEELParser extends antlr4.Parser {
 	            this.state = 134;
 	            this.endpoint();
 	            break;
-	        case FEELParser.PAREN_OPEN:
-	        case FEELParser.BRACKET_OPEN:
-	        case FEELParser.BRACKET_CLOSE:
+	        case 21:
+	        case 23:
+	        case 24:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 135;
 	            this.interval();
@@ -536,12 +532,12 @@ export default class FEELParser extends antlr4.Parser {
     intervalStartPar() {
 	    let localctx = new IntervalStartParContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 18, FEELParser.RULE_intervalStartPar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 144;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << FEELParser.PAREN_OPEN) | (1 << FEELParser.BRACKET_OPEN) | (1 << FEELParser.BRACKET_CLOSE))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 27262976) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -567,12 +563,12 @@ export default class FEELParser extends antlr4.Parser {
     intervalEndPar() {
 	    let localctx = new IntervalEndParContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 20, FEELParser.RULE_intervalEndPar);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 146;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << FEELParser.PAREN_CLOSE) | (1 << FEELParser.BRACKET_OPEN) | (1 << FEELParser.BRACKET_CLOSE))) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 29360128) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -644,7 +640,7 @@ export default class FEELParser extends antlr4.Parser {
     textualExpressions() {
 	    let localctx = new TextualExpressionsContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 26, FEELParser.RULE_textualExpressions);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 152;
@@ -652,7 +648,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 157;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===FEELParser.COMMA) {
+	        while(_la===20) {
 	            this.state = 153;
 	            this.match(FEELParser.COMMA);
 	            this.state = 154;
@@ -684,42 +680,42 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 164;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case FEELParser.FOR:
+	        case 35:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 160;
 	            this.forExpression();
 	            break;
-	        case FEELParser.IF:
+	        case 38:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 161;
 	            this.ifExpression();
 	            break;
-	        case FEELParser.SOME:
-	        case FEELParser.EVERY:
+	        case 41:
+	        case 42:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 162;
 	            this.quantifiedExpression();
 	            break;
-	        case FEELParser.STRING:
-	        case FEELParser.NUMBER:
-	        case FEELParser.TEMPORAL:
-	        case FEELParser.LT:
-	        case FEELParser.GT:
-	        case FEELParser.LE:
-	        case FEELParser.GE:
-	        case FEELParser.MINUS:
-	        case FEELParser.PAREN_OPEN:
-	        case FEELParser.BRACKET_OPEN:
-	        case FEELParser.BRACKET_CLOSE:
-	        case FEELParser.BRACE_OPEN:
-	        case FEELParser.NOT:
-	        case FEELParser.TRUE:
-	        case FEELParser.FALSE:
-	        case FEELParser.NULL:
-	        case FEELParser.FUNCTION:
-	        case FEELParser.AND:
-	        case FEELParser.OR:
-	        case FEELParser.NAME:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 9:
+	        case 10:
+	        case 11:
+	        case 12:
+	        case 14:
+	        case 21:
+	        case 23:
+	        case 24:
+	        case 25:
+	        case 29:
+	        case 30:
+	        case 31:
+	        case 32:
+	        case 33:
+	        case 44:
+	        case 45:
+	        case 48:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 163;
 	            this.disjunction();
@@ -746,7 +742,7 @@ export default class FEELParser extends antlr4.Parser {
     functionDefinition() {
 	    let localctx = new FunctionDefinitionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 30, FEELParser.RULE_functionDefinition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 166;
@@ -756,13 +752,13 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 176;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (FEELParser.FUNCTION - 33)) | (1 << (FEELParser.AND - 33)) | (1 << (FEELParser.OR - 33)) | (1 << (FEELParser.NAME - 33)))) !== 0)) {
+	        if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 38913) !== 0)) {
 	            this.state = 168;
 	            this.formalParameter();
 	            this.state = 173;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===FEELParser.COMMA) {
+	            while(_la===20) {
 	                this.state = 169;
 	                this.match(FEELParser.COMMA);
 	                this.state = 170;
@@ -778,7 +774,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 181;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===FEELParser.COLON) {
+	        if(_la===27) {
 	            this.state = 179;
 	            this.match(FEELParser.COLON);
 	            this.state = 180;
@@ -788,7 +784,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 184;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===FEELParser.EXTERNAL) {
+	        if(_la===34) {
 	            this.state = 183;
 	            this.match(FEELParser.EXTERNAL);
 	        }
@@ -814,7 +810,7 @@ export default class FEELParser extends antlr4.Parser {
     formalParameter() {
 	    let localctx = new FormalParameterContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 32, FEELParser.RULE_formalParameter);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 188;
@@ -822,7 +818,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 191;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===FEELParser.COLON) {
+	        if(_la===27) {
 	            this.state = 189;
 	            this.match(FEELParser.COLON);
 	            this.state = 190;
@@ -848,7 +844,7 @@ export default class FEELParser extends antlr4.Parser {
     forExpression() {
 	    let localctx = new ForExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 34, FEELParser.RULE_forExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 193;
@@ -862,7 +858,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 204;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===FEELParser.COMMA) {
+	        while(_la===20) {
 	            this.state = 197;
 	            this.match(FEELParser.COMMA);
 	            this.state = 198;
@@ -898,7 +894,7 @@ export default class FEELParser extends antlr4.Parser {
     iterationDomain() {
 	    let localctx = new IterationDomainContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 36, FEELParser.RULE_iterationDomain);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 210;
@@ -906,7 +902,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 213;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===FEELParser.DOT_DOT) {
+	        if(_la===18) {
 	            this.state = 211;
 	            this.match(FEELParser.DOT_DOT);
 	            this.state = 212;
@@ -965,12 +961,12 @@ export default class FEELParser extends antlr4.Parser {
     quantifiedExpression() {
 	    let localctx = new QuantifiedExpressionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 40, FEELParser.RULE_quantifiedExpression);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 222;
 	        _la = this._input.LA(1);
-	        if(!(_la===FEELParser.SOME || _la===FEELParser.EVERY)) {
+	        if(!(_la===41 || _la===42)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -986,7 +982,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 232;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (FEELParser.FUNCTION - 33)) | (1 << (FEELParser.AND - 33)) | (1 << (FEELParser.OR - 33)) | (1 << (FEELParser.NAME - 33)))) !== 0)) {
+	        while(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 38913) !== 0)) {
 	            this.state = 226;
 	            this.identifier();
 	            this.state = 227;
@@ -1096,7 +1092,7 @@ export default class FEELParser extends antlr4.Parser {
     comparison() {
 	    let localctx = new ComparisonContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 46, FEELParser.RULE_comparison);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 254;
@@ -1107,7 +1103,7 @@ export default class FEELParser extends antlr4.Parser {
 	        if(la_===1) {
 	            this.state = 255;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << FEELParser.EQ) | (1 << FEELParser.NE) | (1 << FEELParser.LT) | (1 << FEELParser.GT) | (1 << FEELParser.LE) | (1 << FEELParser.GE))) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 8064) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1186,7 +1182,7 @@ export default class FEELParser extends antlr4.Parser {
     addition() {
 	    let localctx = new AdditionContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 50, FEELParser.RULE_addition);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 273;
@@ -1198,7 +1194,7 @@ export default class FEELParser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 274;
 	                _la = this._input.LA(1);
-	                if(!(_la===FEELParser.PLUS || _la===FEELParser.MINUS)) {
+	                if(!(_la===13 || _la===14)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1232,7 +1228,7 @@ export default class FEELParser extends antlr4.Parser {
     multiplication() {
 	    let localctx = new MultiplicationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 52, FEELParser.RULE_multiplication);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 281;
@@ -1244,7 +1240,7 @@ export default class FEELParser extends antlr4.Parser {
 	            if(_alt===1) {
 	                this.state = 282;
 	                _la = this._input.LA(1);
-	                if(!(_la===FEELParser.STAR || _la===FEELParser.FORWARD_SLASH)) {
+	                if(!(_la===15 || _la===16)) {
 	                this._errHandler.recoverInline(this);
 	                }
 	                else {
@@ -1316,16 +1312,16 @@ export default class FEELParser extends antlr4.Parser {
     arithmeticNegation() {
 	    let localctx = new ArithmeticNegationContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 56, FEELParser.RULE_arithmeticNegation);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 300;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===FEELParser.MINUS || _la===FEELParser.NOT) {
+	        while(_la===14 || _la===29) {
 	            this.state = 297;
 	            _la = this._input.LA(1);
-	            if(!(_la===FEELParser.MINUS || _la===FEELParser.NOT)) {
+	            if(!(_la===14 || _la===29)) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -1390,7 +1386,7 @@ export default class FEELParser extends antlr4.Parser {
     type() {
 	    let localctx = new TypeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 60, FEELParser.RULE_type);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.state = 352;
 	        this._errHandler.sync(this);
@@ -1407,7 +1403,7 @@ export default class FEELParser extends antlr4.Parser {
 	            this.state = 311;
 	            localctx.typeName = this.identifier();
 	            this.state = 312;
-	            if (!( "range" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))) || "list" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))))) {
+	            if (!( "range" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))) || "list" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))))) {
 	                throw new antlr4.error.FailedPredicateException(this, "\"range\" == $typeName.text || \"list\" == $typeName.text");
 	            }
 	            this.state = 313;
@@ -1423,7 +1419,7 @@ export default class FEELParser extends antlr4.Parser {
 	            this.state = 317;
 	            localctx.typeName = this.identifier();
 	            this.state = 318;
-	            if (!( "context" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))))) {
+	            if (!( "context" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))))) {
 	                throw new antlr4.error.FailedPredicateException(this, "\"context\" == $typeName.text");
 	            }
 	            this.state = 319;
@@ -1437,7 +1433,7 @@ export default class FEELParser extends antlr4.Parser {
 	            this.state = 330;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===FEELParser.COMMA) {
+	            while(_la===20) {
 	                this.state = 323;
 	                this.match(FEELParser.COMMA);
 	                this.state = 324;
@@ -1459,7 +1455,7 @@ export default class FEELParser extends antlr4.Parser {
 	            this.state = 335;
 	            localctx.typeName = this.identifier();
 	            this.state = 336;
-	            if (!( "function" == (localctx.typeName===null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))))) {
+	            if (!( "function" == (localctx.typeName == null ? null : this._input.getText(new antlr4.Interval(localctx.typeName.start,localctx.typeName.stop))))) {
 	                throw new antlr4.error.FailedPredicateException(this, "\"function\" == $typeName.text");
 	            }
 	            this.state = 337;
@@ -1467,13 +1463,13 @@ export default class FEELParser extends antlr4.Parser {
 	            this.state = 346;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            if(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (FEELParser.FUNCTION - 33)) | (1 << (FEELParser.AND - 33)) | (1 << (FEELParser.OR - 33)) | (1 << (FEELParser.NAME - 33)))) !== 0)) {
+	            if(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 38913) !== 0)) {
 	                this.state = 338;
 	                this.type();
 	                this.state = 343;
 	                this._errHandler.sync(this);
 	                _la = this._input.LA(1);
-	                while(_la===FEELParser.COMMA) {
+	                while(_la===20) {
 	                    this.state = 339;
 	                    this.match(FEELParser.COMMA);
 	                    this.state = 340;
@@ -1524,7 +1520,7 @@ export default class FEELParser extends antlr4.Parser {
 	                this.state = 362;
 	                this._errHandler.sync(this);
 	                switch(this._input.LA(1)) {
-	                case FEELParser.BRACKET_OPEN:
+	                case 23:
 	                    this.state = 355;
 	                    this.match(FEELParser.BRACKET_OPEN);
 	                    this.state = 356;
@@ -1532,11 +1528,11 @@ export default class FEELParser extends antlr4.Parser {
 	                    this.state = 357;
 	                    this.match(FEELParser.BRACKET_CLOSE);
 	                    break;
-	                case FEELParser.PAREN_OPEN:
+	                case 21:
 	                    this.state = 359;
 	                    this.parameters();
 	                    break;
-	                case FEELParser.DOT:
+	                case 19:
 	                    this.state = 360;
 	                    this.match(FEELParser.DOT);
 	                    this.state = 361;
@@ -1610,7 +1606,7 @@ export default class FEELParser extends antlr4.Parser {
     namedParameters() {
 	    let localctx = new NamedParametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 66, FEELParser.RULE_namedParameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 374;
@@ -1622,7 +1618,7 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 384;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===FEELParser.COMMA) {
+	        while(_la===20) {
 	            this.state = 377;
 	            this.match(FEELParser.COMMA);
 	            this.state = 378;
@@ -1677,19 +1673,19 @@ export default class FEELParser extends antlr4.Parser {
     positionalParameters() {
 	    let localctx = new PositionalParametersContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 70, FEELParser.RULE_positionalParameters);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 397;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << FEELParser.STRING) | (1 << FEELParser.NUMBER) | (1 << FEELParser.TEMPORAL) | (1 << FEELParser.LT) | (1 << FEELParser.GT) | (1 << FEELParser.LE) | (1 << FEELParser.GE) | (1 << FEELParser.MINUS) | (1 << FEELParser.PAREN_OPEN) | (1 << FEELParser.BRACKET_OPEN) | (1 << FEELParser.BRACKET_CLOSE) | (1 << FEELParser.BRACE_OPEN) | (1 << FEELParser.NOT) | (1 << FEELParser.TRUE) | (1 << FEELParser.FALSE))) !== 0) || ((((_la - 32)) & ~0x1f) == 0 && ((1 << (_la - 32)) & ((1 << (FEELParser.NULL - 32)) | (1 << (FEELParser.FUNCTION - 32)) | (1 << (FEELParser.FOR - 32)) | (1 << (FEELParser.IF - 32)) | (1 << (FEELParser.SOME - 32)) | (1 << (FEELParser.EVERY - 32)) | (1 << (FEELParser.AND - 32)) | (1 << (FEELParser.OR - 32)) | (1 << (FEELParser.NAME - 32)))) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 3818937968) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 79435) !== 0)) {
 	            this.state = 389;
 	            this.expression();
 	            this.state = 394;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===FEELParser.COMMA) {
+	            while(_la===20) {
 	                this.state = 390;
 	                this.match(FEELParser.COMMA);
 	                this.state = 391;
@@ -1857,20 +1853,20 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 423;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case FEELParser.STRING:
-	        case FEELParser.NUMBER:
-	        case FEELParser.TEMPORAL:
-	        case FEELParser.TRUE:
-	        case FEELParser.FALSE:
-	        case FEELParser.FUNCTION:
-	        case FEELParser.AND:
-	        case FEELParser.OR:
-	        case FEELParser.NAME:
+	        case 4:
+	        case 5:
+	        case 6:
+	        case 30:
+	        case 31:
+	        case 33:
+	        case 44:
+	        case 45:
+	        case 48:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 421;
 	            this.simpleLiteral();
 	            break;
-	        case FEELParser.NULL:
+	        case 32:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 422;
 	            this.match(FEELParser.NULL);
@@ -1901,27 +1897,27 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 429;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case FEELParser.NUMBER:
+	        case 5:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 425;
 	            this.numericLiteral();
 	            break;
-	        case FEELParser.STRING:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 426;
 	            this.stringLiteral();
 	            break;
-	        case FEELParser.TRUE:
-	        case FEELParser.FALSE:
+	        case 30:
+	        case 31:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 427;
 	            this.booleanLiteral();
 	            break;
-	        case FEELParser.TEMPORAL:
-	        case FEELParser.FUNCTION:
-	        case FEELParser.AND:
-	        case FEELParser.OR:
-	        case FEELParser.NAME:
+	        case 6:
+	        case 33:
+	        case 44:
+	        case 45:
+	        case 48:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 428;
 	            this.dateTimeLiteral();
@@ -1971,12 +1967,12 @@ export default class FEELParser extends antlr4.Parser {
     booleanLiteral() {
 	    let localctx = new BooleanLiteralContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 84, FEELParser.RULE_booleanLiteral);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 433;
 	        _la = this._input.LA(1);
-	        if(!(_la===FEELParser.TRUE || _la===FEELParser.FALSE)) {
+	        if(!(_la===30 || _la===31)) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -2029,17 +2025,17 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 440;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case FEELParser.BRACKET_OPEN:
+	        case 23:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 437;
 	            this.list();
 	            break;
-	        case FEELParser.FUNCTION:
+	        case 33:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 438;
 	            this.functionDefinition();
 	            break;
-	        case FEELParser.BRACE_OPEN:
+	        case 25:
 	            this.enterOuterAlt(localctx, 3);
 	            this.state = 439;
 	            this.context();
@@ -2066,7 +2062,7 @@ export default class FEELParser extends antlr4.Parser {
     list() {
 	    let localctx = new ListContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 90, FEELParser.RULE_list);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 442;
@@ -2080,7 +2076,7 @@ export default class FEELParser extends antlr4.Parser {
 	            this.state = 448;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===FEELParser.COMMA) {
+	            while(_la===20) {
 	                this.state = 444;
 	                this.match(FEELParser.COMMA);
 	                this.state = 445;
@@ -2112,7 +2108,7 @@ export default class FEELParser extends antlr4.Parser {
     context() {
 	    let localctx = new ContextContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 92, FEELParser.RULE_context);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 455;
@@ -2120,13 +2116,13 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 464;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===FEELParser.STRING || ((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (FEELParser.FUNCTION - 33)) | (1 << (FEELParser.AND - 33)) | (1 << (FEELParser.OR - 33)) | (1 << (FEELParser.NAME - 33)))) !== 0)) {
+	        if(_la===4 || ((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 38913) !== 0)) {
 	            this.state = 456;
 	            this.contextEntry();
 	            this.state = 461;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
-	            while(_la===FEELParser.COMMA) {
+	            while(_la===20) {
 	                this.state = 457;
 	                this.match(FEELParser.COMMA);
 	                this.state = 458;
@@ -2189,15 +2185,15 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 474;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case FEELParser.FUNCTION:
-	        case FEELParser.AND:
-	        case FEELParser.OR:
-	        case FEELParser.NAME:
+	        case 33:
+	        case 44:
+	        case 45:
+	        case 48:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 472;
 	            this.identifier();
 	            break;
-	        case FEELParser.STRING:
+	        case 4:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 473;
 	            this.stringLiteral();
@@ -2228,15 +2224,15 @@ export default class FEELParser extends antlr4.Parser {
 	        this.state = 482;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case FEELParser.TEMPORAL:
+	        case 6:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 476;
 	            this.match(FEELParser.TEMPORAL);
 	            break;
-	        case FEELParser.FUNCTION:
-	        case FEELParser.AND:
-	        case FEELParser.OR:
-	        case FEELParser.NAME:
+	        case 33:
+	        case 44:
+	        case 45:
+	        case 48:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 477;
 	            this.identifier();
@@ -2269,12 +2265,12 @@ export default class FEELParser extends antlr4.Parser {
     identifier() {
 	    let localctx = new IdentifierContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 100, FEELParser.RULE_identifier);
-	    var _la = 0; // Token type
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 484;
 	        _la = this._input.LA(1);
-	        if(!(((((_la - 33)) & ~0x1f) == 0 && ((1 << (_la - 33)) & ((1 << (FEELParser.FUNCTION - 33)) | (1 << (FEELParser.AND - 33)) | (1 << (FEELParser.OR - 33)) | (1 << (FEELParser.NAME - 33)))) !== 0))) {
+	        if(!(((((_la - 33)) & ~0x1f) === 0 && ((1 << (_la - 33)) & 38913) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -3641,7 +3637,7 @@ class TypeContext extends antlr4.ParserRuleContext {
         super(parent, invokingState);
         this.parser = parser;
         this.ruleIndex = FEELParser.RULE_type;
-        this.typeName = null; // IdentifierContext
+        this.typeName = null;
     }
 
     qualifiedName() {
