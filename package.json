@@ -1,6 +1,6 @@
 {
   "name": "jdmn-js-runtime",
-  "version": "0.0.4",
+  "version": "0.0.7-alpha",
   "type": "module",
   "description": "DMN runtime engine",
   "repository": {
