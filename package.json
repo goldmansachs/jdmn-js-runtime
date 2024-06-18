@@ -17,7 +17,7 @@
   ],
   "author": "Octavian Patrascoiu",
   "license": "Apache-2.0",
-  "browser": "dist/antlr4.web.mjs",
+  "browser": "dist/jdmn-js-runtime.web.mjs",
   "main": "dist/jdmn-js-runtime.node.cjs",
   "module": "dist/jdmn-js-runtime.node.mjs",
   "engines": {
