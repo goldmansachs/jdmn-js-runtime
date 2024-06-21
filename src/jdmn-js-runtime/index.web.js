@@ -1,8 +1,7 @@
-import FEELLexer from "./parser/FEELParser.js";
+import FEELLexer from "./parser/FEELLexer.js";
 import FEELParser from "./parser/FEELParser.js";
 
-import { inputEntry } from "./validation/FEELValidation.js";
-import { outputEntry } from "./validation/FEELValidation.js";
+import { inputEntry, outputEntry } from "./validation/FEELValidation.js";
 import { ThrowErrorAndFailListener } from "./validation/ThrowErrorAndFailListener.js";
 
 export default {
