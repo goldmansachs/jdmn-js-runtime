@@ -3,7 +3,7 @@ import { FEELLexer, ThrowErrorAndFailListener } from "jdmn-js-runtime";
 
 describe("Lexer", () => {
     it("testIncorrectToken", () => {
-        expect(function() { checkToken("@"); } ).toThrow(new Error("line 1:0 token recognition error at: '@' LexerNoViableAltException"));
+        expect(function() { checkToken("@"); } ).toThrow(new Error("line 1:0 token recognition error at: '@'"));
     });
 
     it("testSpaces", () => {
