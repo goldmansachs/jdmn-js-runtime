@@ -17,7 +17,7 @@ const buildConfig = ( platform, extensions ) => ({
         filename: `jdmn-js-runtime.${platform}.${extensions}`,
         chunkFormat: extensions === "mjs" ? "module" : "commonjs",
         library: {
-            type: extensions === "mjs" ? "module" : "commonjs"
+            type: extensions === "mjs" ? "module" : "commonjs2"
         }
     },
 
