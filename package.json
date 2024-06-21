@@ -41,8 +41,9 @@
     "antlr4": "4.13.1-patch-1"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.23.3",
-    "@babel/eslint-parser": "7.23.3",
+    "@babel/core": "7.24.7",
+    "@babel/preset-env": "7.24.7",
+    "@babel/eslint-parser": "7.24.7",
     "babel-loader": "^9.1.3",
     "eslint": "^8.53.0",
     "eslint-plugin-jest": "^27.6.0",
