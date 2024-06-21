@@ -11,13 +11,13 @@ const options = {
 
 const buildConfig = ( platform, extensions ) => ({
     mode: "production",
-    entry: `./src/jdmn-js-runtime/index.${platform}.js`,
+    entry: `./src/jdmn-js-runtime/index.js`,
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: `jdmn-js-runtime.${platform}.${extensions}`,
         chunkFormat: extensions === "mjs" ? "module" : "commonjs",
         library: {
-            type: extensions === "mjs" ? "module" : "commonjs"
+            type: extensions === "mjs" ? "module" : "commonjs2"
         }
     },
 
@@ -60,7 +60,6 @@ const buildConfig = ( platform, extensions ) => ({
         outputModule: extensions === "mjs"
     },
 })
-
 
 export default [
     buildConfig("node", "cjs"),

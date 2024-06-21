@@ -1,8 +1,9 @@
-import antlr4 from "antlr4";
+import { ErrorListener } from "antlr4";
 
-export class ThrowErrorAndFailListener extends antlr4.error.ErrorListener {
-    syntaxError(recognizer, offendingSymbol, line, column, msg, e) {
-        throw new Error(`line ${line}:${column} ${msg} ${e}`);
+export class ThrowErrorAndFailListener extends ErrorListener {
+    // eslint-disable-next-line no-unused-vars
+    syntaxError(recognizer, offendingSymbol, line, column, msg, _) {
+        throw new Error(`line ${line}:${column} ${msg}`);
     }
 }
 
