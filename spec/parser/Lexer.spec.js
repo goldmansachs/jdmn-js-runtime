@@ -234,6 +234,9 @@ const SPECIAL_NAMES = [
     "insert before",
     "index of",
     "distinct values",
+    // context functions
+    "get entries",
+    "get value",
     // date time properties
     "time offset"
 ];
