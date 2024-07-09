@@ -36,21 +36,17 @@ describe("Lexer", () => {
         let token = checkToken("\"abc\"", FEELLexer.STRING, "\"abc\"");
         checkPosition(token, 1, 1, 1, 5, 0, 5);
 
-        token = checkToken("\"a\u0030b\"", FEELLexer.STRING, "\"a0b\"");
-        checkPosition(token, 1, 1, 1, 5, 0, 5);
-
-        token = checkToken("\".\"", FEELLexer.STRING, "\".\"");
-        checkPosition(token, 1, 1, 1, 3, 0, 3);
-
-        token = checkToken("\".\"", FEELLexer.STRING, "\".\"");
-        checkPosition(token, 1, 1, 1, 3, 0, 3);
-
         token = checkToken("\"\\b\\t\\n\\r\\f\\'\\\"\"", FEELLexer.STRING, "\"\\b\\t\\n\\r\\f\\'\\\"\"");
         checkPosition(token, 1, 1, 1, 16, 0, 16);
 
-        // multiline string
-        token = checkToken("\"l1\\\nl2\"", FEELLexer.STRING, "\"l1\\\nl2\"");
-        checkPosition(token, 1, 1, 2, 4, 0, 8);
+        token = checkToken("\"a\u0030b\"", FEELLexer.STRING, "\"a0b\"");
+        checkPosition(token, 1, 1, 1, 5, 0, 5);
+
+        token = checkToken("\"a\\ud83d\\udca9b\"", FEELLexer.STRING, "\"a\\ud83d\\udca9b\"");
+        checkPosition(token, 1, 1, 1, 16, 0, 16);
+
+        token = checkToken("\"a\\U01F40Eb\"", FEELLexer.STRING, "\"a\uD83D\uDC0Eb\"");
+        checkPosition(token, 1, 1, 1, 6, 0, 12);
 
         token = checkToken("\".\"", FEELLexer.STRING, "\".\"");
         checkPosition(token, 1, 1, 1, 3, 0, 3);
@@ -62,6 +58,20 @@ describe("Lexer", () => {
 
         token = checkToken("false", FEELLexer.FALSE, "false");
         checkPosition(token, 1, 1, 1, 5, 0, 5);
+    });
+
+    it("testTemporalLiteral", () => {
+        let token = checkToken("@ \"2019-03-31\"", FEELLexer.TEMPORAL, "@ \"2019-03-31\"");
+        checkPosition(token, 1, 1, 1, 14, 0, 14);
+
+        token = checkToken("@\"12:00:00\"", FEELLexer.TEMPORAL, "@\"12:00:00\"");
+        checkPosition(token, 1, 1, 1, 11, 0, 11);
+
+        token = checkToken("@\"2019-03-31T12:00:00\"", FEELLexer.TEMPORAL, "@\"2019-03-31T12:00:00\"");
+        checkPosition(token, 1, 1, 1, 22, 0, 22);
+
+        token = checkToken("@\"P10Y\"", FEELLexer.TEMPORAL, "@\"P10Y\"");
+        checkPosition(token, 1, 1, 1, 7, 0, 7);
     });
 
     it("testSimpleName", () => {
@@ -76,18 +86,23 @@ describe("Lexer", () => {
 
         token = checkToken("?ab_12_", FEELLexer.NAME, "?ab_12_");
         checkPosition(token, 1, 1, 1, 7, 0, 7);
-
-        // date and time functions
+        // special names
         for (let i in SPECIAL_NAMES) {
             let nameWithSpaces = SPECIAL_NAMES[i];
             let token = checkToken(nameWithSpaces, FEELLexer.NAME, nameWithSpaces);
             let end = nameWithSpaces.length;
             checkPosition(token, 1, 1, 1, end, 0, end);
+            // Check for extra spaces
+            let nameWithExtraSpaces = nameWithSpaces.replace(" ", "  ");
+            token = checkToken(nameWithExtraSpaces, FEELLexer.NAME, nameWithSpaces);
+            let endWithSpaces = nameWithExtraSpaces.length;
+            checkPosition(token, 1, 1, 1, end, 0, endWithSpaces);
         }
     });
 
     it("testQuotedNames", () => {
-        checkToken(" 'not' ", FEELLexer.NAME, "'not'");
+        checkToken(" 'not' ", FEELLexer.NAME, "not");
+        checkToken(" 'Student''s name'", FEELLexer.NAME, "Student's name");
     });
 
     it("testKeywords", () => {
@@ -125,7 +140,7 @@ describe("Lexer", () => {
     });
 
     it("testPunctuation", () => {
-        let text = "( ) [ ] { } . .. , :";
+        let text = "( ) [ ] { } . .. , :->";
         checkTokenList(
             text, [
                 FEELLexer.PAREN_OPEN, FEELLexer.PAREN_CLOSE, FEELLexer.BRACKET_OPEN, FEELLexer.BRACKET_CLOSE,
@@ -221,6 +236,11 @@ const SPECIAL_NAMES = [
     "date and time",
     "days and time duration",
     "years and months duration",
+    // number functions
+    "round up",
+    "round down",
+    "round half up",
+    "round half down",
     // string functions
     "string length",
     "upper case",
@@ -230,6 +250,7 @@ const SPECIAL_NAMES = [
     "starts with",
     "ends with",
     // list functions
+    "start position",
     "list contains",
     "insert before",
     "index of",
@@ -237,7 +258,19 @@ const SPECIAL_NAMES = [
     // context functions
     "get entries",
     "get value",
+    // range functions
+    "met by",
+    "overlaps before",
+    "overlaps after",
+    "finished by",
+    "started by",
+    "start included",
+    "end included",
     // date time properties
+    "day of year",
+    "day of week",
+    "month of year",
+    "week of year",
     "time offset"
 ];
 
@@ -267,7 +300,7 @@ function checkTokenList(text, expectedTokenCodes, expectedLexemes) {
 }
 
 function checkPosition(token, beginLine, beginColumn, endLine, endColumn, beginOffset, endOffset) {
-    let message = `Error when checking '${token.text}' for `;
+    let message = `Error when checking "${token.text}" for `;
     expect(getBeginLine(token)).withContext(message + "begin line").toBe(beginLine);
     expect(getBeginColumn(token)).withContext(message + " begin column").toBe(beginColumn);
     expect(getEndLine(token)).withContext(message + "nd line").toBe(endLine);

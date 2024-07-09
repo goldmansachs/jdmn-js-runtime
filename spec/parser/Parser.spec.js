@@ -105,5 +105,15 @@ describe("Parser", () => {
         // In expressions
         validateOutputEntry("[1, 2, 3] in [1, 2, 3]");
         validateOutputEntry("[1,2,3] in ([[1,2,3,4]], [[1,2,3]])");
+        // Function definitions
+        validateOutputEntry("function (x, y) x + y");
+        validateOutputEntry("function (x: number, y: number) : number x + y");
+        validateOutputEntry("function (x: number, y: number) : list<number> [x, y]");
+        validateOutputEntry("function (x: number, y: number) : context<a: number, b: number> {a: x, b: y}");
+        validateOutputEntry("function (x, y) external { java: {class : \"name\", methodSignature: \"signature\" } }");
+        validateOutputEntry("function (x : feel.string, y : feel.string) external { java: {class : \"name\", methodSignature: \"signature\" } }");
+        validateOutputEntry("123 instance of function <number, number> -> number");
+        // Temporal literals
+        validateOutputEntry("@\"2019-03-31\" instance of date");
     });
 });
