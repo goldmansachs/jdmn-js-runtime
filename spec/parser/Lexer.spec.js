@@ -48,6 +48,10 @@ describe("Lexer", () => {
         token = checkToken("\"a\\U01F40Eb\"", FEELLexer.STRING, "\"a\uD83D\uDC0Eb\"");
         checkPosition(token, 1, 1, 1, 6, 0, 12);
 
+        // multiline string
+        token = checkToken("\"l1\\\nl2\"", FEELLexer.STRING, "\"l1\\\nl2\"");
+        checkPosition(token, 1, 1, 2, 4, 0, 8);
+
         token = checkToken("\".\"", FEELLexer.STRING, "\".\"");
         checkPosition(token, 1, 1, 1, 3, 0, 3);
     });
@@ -216,6 +220,7 @@ describe("Lexer", () => {
         checkToken("substring after", FEELLexer.NAME, "substring after");
         checkToken("starts with", FEELLexer.NAME, "starts with");
         checkToken("ends with", FEELLexer.NAME, "ends with");
+        checkToken("string join", FEELLexer.NAME, "string join");
         checkToken("list contains", FEELLexer.NAME, "list contains");
         checkToken("insert before", FEELLexer.NAME, "insert before");
         checkToken("index of", FEELLexer.NAME, "index of");
@@ -249,6 +254,7 @@ const SPECIAL_NAMES = [
     "substring after",
     "starts with",
     "ends with",
+    "string join",
     // list functions
     "start position",
     "list contains",
@@ -258,6 +264,8 @@ const SPECIAL_NAMES = [
     // context functions
     "get entries",
     "get value",
+    "context put",
+    "context merge",
     // range functions
     "met by",
     "overlaps before",

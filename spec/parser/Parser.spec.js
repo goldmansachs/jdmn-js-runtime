@@ -116,4 +116,23 @@ describe("Parser", () => {
         // Temporal literals
         validateOutputEntry("@\"2019-03-31\" instance of date");
     });
+
+    it("Expressions - Instance Of", () => {
+        validateOutputEntry("3 instance of number");
+        validateOutputEntry("123 instance of function <number, number> -> number");
+        validateOutputEntry("\"abc\" instance of string");
+        validateOutputEntry("true instance of boolean");
+        validateOutputEntry("date(\"2011-01-03\") instance of date");
+        validateOutputEntry("time(\"12:00:00Z\") instance of time");
+        validateOutputEntry("date and time(\"2016-03-01T12:00:00Z\") instance of date and time");
+        validateOutputEntry("duration(\"P1Y1M\") instance of years and months duration");
+        validateOutputEntry("duration(\"P1DT1H\") instance of days and time duration");
+        validateOutputEntry("x instance of number");
+        validateOutputEntry("x instance of context<x: number, y:string>");
+        validateOutputEntry("x instance of range<number>");
+        validateOutputEntry("x instance of function<number, string> -> number");
+        validateOutputEntry("x instance of list<number>");
+        // Temporal literals
+        validateOutputEntry("@\"2019-03-31\" instance of date");
+    });
 });
