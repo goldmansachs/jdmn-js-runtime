@@ -1,4 +1,5 @@
 import { SpecReporter } from "jasmine-spec-reporter";
+import { JUnitXmlReporter } from "jasmine-reporters";
 
 jasmine.getEnv().clearReporters();
 jasmine.getEnv().addReporter(
@@ -6,5 +7,12 @@ jasmine.getEnv().addReporter(
         spec: {
             displayPending: true,
         },
+    })
+);
+jasmine.getEnv().addReporter(
+    new JUnitXmlReporter({
+        savePath: 'target/test-results',
+        consolidateAll: false,
+        filePrefix: 'JUNIT-'
     })
 );
